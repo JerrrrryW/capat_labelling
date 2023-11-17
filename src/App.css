@@ -1,0 +1,111 @@
+/* src/App.css */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+}
+
+.left-panel {
+  flex: 2; /* 占据窗口宽度的2/3 */
+  background-color: #f2ece5;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+}
+
+.right-panel {
+  flex: 1; /* 占据窗口宽度的1/3 */
+  background-color: #d7cfc5;
+  padding: 10px;
+  overflow: auto;
+  height: 100vh;
+}
+
+.card {
+  margin-top: 10px;
+  border: 1px solid chocolate;
+  border-radius: 5px;
+  clear:both;
+}
+
+.card-header {
+background-color: chocolate;
+color: white;
+padding: 10px;
+border-top-left-radius: 5;
+border-top-right-radius: 5;
+}
+
+button {
+  background-color: #eee;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #eee;
+  border: chocolate 1x solid;
+  font-weight: bold;
+}
+
+button.active {
+  background-color: chocolate;
+  color: white;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+canvas {
+  margin-top: 10px;
+}
+
+.image-view {
+  flex: 1;
+  max-width: 100%; /* 不超过父容器的宽度 */
+  max-height: 100%;
+  overflow: hidden;
+  position: relative; /* 添加这一行以确保绝对定位元素相对于该容器定位 */
+  z-index: 2; /* 将图像容器置于较高的层级 */
+}
+
+#image-container {
+  flex:1;
+  /* max-height: 72vh; */
+}
+
+#history-container {
+  overflow-y: scroll;
+  align-items: flex-end;
+
+}
+
+.image-list {
+  overflow-x: auto;
+  padding: 10px;
+}
+
+.scrollable-images {
+  height: 12vh;
+  display: flex;
+  overflow-x: scroll;
+  gap: 10px;
+}
+
+.scrollable-images img {
+  max-width: 100px; /* 根据需要设置图像的最大宽度 */
+  /* border: 1px solid #ccc; */
+  border-radius: 10px;
+}
