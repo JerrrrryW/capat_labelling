@@ -28,6 +28,41 @@ function HistoryCard({
   );
 }
 
+function ArtworkInfo({}) {
+  const imageSrc = './P330.jpg'; // 图片路径
+
+  const containerStyle = {
+    margin: '20px'
+  };
+
+  const imageStyle = {
+    maxWidth: '200px',
+    maxHeight: '200px',
+    float: 'right', // 将图片浮动到右侧
+    marginLeft: '20px' // 为图片和文字之间添加一些空间
+  };
+
+
+  return (
+    <div style={containerStyle}>
+      {/* 图片容器 */}
+      <div>
+        <img src={imageSrc} alt="山水（十二開）" style={imageStyle} />
+      </div>
+      {/* 文本信息 */}
+      <div >
+        <h1>山水（十二開）</h1>
+        <p><strong>作者:</strong> 石濤</p>
+        <p><strong>时代:</strong> 清</p>
+        <p><strong>材质:</strong> 紙本設色</p>
+        <p><strong>尺寸:</strong> 各47.5×31.4</p>
+        <p><strong>收藏机构:</strong> 波士頓藝術博物館</p>
+      </div>
+    </div>
+  );
+};
+
+
 
 
 function App() {
@@ -41,6 +76,7 @@ function App() {
   ]);
   const [imageSrc, setImageSrc] = useState('./P330.jpg');
   const [fragmentSrc, setFragmentSrc] = useState('./P330_1.png');
+  const [paintings, setPaintings] = useState([{ImageID: "", PaintingID:'选择画作...'}]); // [ { PID: 1, title: '山水（十二開）' }, ...
   const cropperParentRef = useRef(null);
 
   const [windowSize, setWindowsSize] = useState({
@@ -58,10 +94,24 @@ function App() {
     })
   }, [])
 
+  // Fetch paintings from backend
+  useEffect(() => {
+    fetch('/api/getAllPaintings')
+      .then(res => res.json())
+      .then(data => {
+        console.log("Got Images");
+        setPaintings(data);
+      })
+      .catch(err => {
+        console.log("failed:",err);
+      });
+  }, []);
+
   return (
     <div className="app-container">
       <Toolbar
         setImageSrc={setImageSrc}
+        paintings={paintings}
       />
       <div className="main-content">
         {/* <ImageUploader /> */}
@@ -81,6 +131,7 @@ function App() {
         </div>
         {/* <ImageCropper /> */}
         <div className="right-panel">
+          <ArtworkInfo />
           <LabellingView />
         </div>
       </div>
