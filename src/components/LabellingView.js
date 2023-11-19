@@ -25,10 +25,10 @@ const LabellingView = () => {
   const dianJingTags = ['是', '否'];
 
   return (
-    <div>
+    <div style={{}}>
       <h2>画作整体特征</h2>
       <MultiSelectTags tags={compositionTags} title='构图' />
-      <MultiSelectTags tags={materialTags} title='材质' />
+      {/* <MultiSelectTags tags={materialTags} title='材质' /> */}
 
       <h2>局部切片特征</h2>
       <MultiSelectTags tags={categoryTags} title='类别' />
