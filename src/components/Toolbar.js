@@ -6,6 +6,7 @@ function Toolbar({
   setImageSrc,
   setSelectedPainting,
   paintings,
+  handleSaveButtonClick,
 }) {
 
   const [selectedItemIndex, setSelectedItemIndex] = useState(0); // 选中的图片索引
@@ -35,10 +36,6 @@ function Toolbar({
     setSelectedPainting(paintings[newIndex].PaintingID)
     setImageSrc("./img2/" + paintings[newIndex].ImageID + ".png")
   };
-
-  const handleSaveButtonClick = () => {
-    alert("暂存成功")
-  }
 
   return (
     <div className="toolbar">
